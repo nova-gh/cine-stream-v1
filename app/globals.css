@@ -42,7 +42,7 @@
     @apply transition duration-75  ease-in-out
   }
   .card-title{
-    @apply font-semibold text-lg
+    @apply font-semibold text-base
   }
   .card-details{
     @apply text-sm text-gray-300 font-medium
