@@ -1,3 +1,60 @@
 @tailwind base;
+:root {
+  --scroll-bar: #2c3755;
+  --scroll-background: #10141f;
+}
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-bar) var(--scroll-background);
+}
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--scroll-background);
+  border-radius: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-bar);
+  border-radius: 14px;
+  border: 3px solid var(--scroll-background);
+}
+
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .body{
+    @apply flex flex-col lg:flex-row min-h-screen bg-bg text-white  mx-auto max-w-[1400px] w-full
+  }
+  .main-wrapper{
+    @apply flex-1 p-5  h-screen overflow-y-scroll max-w-[1400px] w-full
+  }
+  .main{
+    @apply lg:pr-4 space-y-10 
+  }
+  .section-title{
+    @apply text-3xl sm:text-4xl font-semibold mb-5 text-brand
+  }
+  .link_hover{
+    @apply transition duration-75  ease-in-out
+  }
+  .card-title{
+    @apply font-semibold text-lg
+  }
+  .card-details{
+    @apply text-sm text-gray-300 font-medium
+  }
+  .embla {
+    overflow: hidden;
+  }
+  .embla__container {
+    @apply flex 
+  }
+  .embla__slide {
+    @apply flex-[0_0_50%] lg:flex-[0_0_33.33%] min-w-0 pl-6 xl:flex-[0_0_25%] xl:pl-6 
+  }
+
+}
