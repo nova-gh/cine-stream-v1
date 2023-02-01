@@ -40,7 +40,7 @@ const Modal = ({ isOpen, closeModal, trailer, name }: Props) => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left text-white align-middle transition-all transform shadow-xl rounded-2xl bg-bg-light sm:max-w-xl lg:max-w-2xl xl:max-w-3xl">
-                  <div className="flex justify-between">
+                  <div className="flex items-center justify-between">
                     <Dialog.Title
                       as="h3"
                       className="text-lg font-medium leading-6 "

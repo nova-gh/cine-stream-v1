@@ -30,7 +30,7 @@
     @apply flex flex-col lg:flex-row min-h-screen bg-bg text-white  mx-auto max-w-[1400px] w-full
   }
   .main-wrapper{
-    @apply flex-1 p-5  h-[calc(100vh-152px)] lg:h-screen overflow-y-scroll max-w-[1400px] w-full 
+    @apply flex-1 p-5 h-screen overflow-y-scroll max-w-[1400px] w-full 
   }
   .main{
     @apply lg:pr-4 space-y-10 

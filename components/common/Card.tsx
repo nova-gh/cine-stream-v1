@@ -21,9 +21,8 @@ const Card = ({ item, slider, type }: Props) => {
           src={imgDomain + item.poster_path}
           fill
           alt={`${item.title} Poster`}
-          sizes="(max-width: 768px) 100vw,
-          (max-width: 1200px) 50vw,
-          33vw"
+          sizes="(max-width: 768px) 50vw,
+          (max-width: 1200px) 100vw,33vw"
           placeholder="blur"
           blurDataURL={rgbDataURL(227, 109, 104)}
           className="  max-w-[250px] object-fill transition-all  duration-75 ease-linear  group-hover:brightness-50"

@@ -33,10 +33,8 @@ const DynamicTvPage = async ({ params }: Props) => {
                 src={imgDomain + tv.poster_path}
                 fill
                 alt={`${tv.original_name} Poster`}
-                sizes="(max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            "
-                placeholder="blur"
+                sizes="(max-width: 768px) 50vw,
+                (max-width: 1200px) 100vw,33vw"
                 blurDataURL={rgbDataURL(227, 109, 104)}
                 className="object-cover max-w-max rounded-xl"
               />

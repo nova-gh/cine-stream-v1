@@ -31,9 +31,8 @@ const DynamicMoviePage = async ({ params }: Props) => {
                 src={imgDomain + movie.poster_path}
                 fill
                 alt={`${movie.title} Poster`}
-                sizes="(max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            "
+                sizes="(max-width: 768px) 50vw,
+                (max-width: 1200px) 100vw,33vw"
                 placeholder="blur"
                 blurDataURL={rgbDataURL(227, 109, 104)}
                 className="object-cover max-w-max rounded-xl"
