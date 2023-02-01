@@ -20,7 +20,7 @@ const TrendingSection = ({ list }: Props) => {
   );
   return (
     <section className="">
-      <h1 className="section-title">Trending Movies and Shows</h1>
+      <h1 className="section-title">Trending Movies & Shows</h1>
       <div className="embla" ref={emblaRef}>
         <div className="embla__container">
           {list.map((item) => (

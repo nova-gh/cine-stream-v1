@@ -1,4 +1,4 @@
-import { MediaItem } from "types/typing";
+import { MediaItem, MovieDetails, TrailersResponse } from "types/typing";
 import { baseAPI } from "./constants";
 
 export const getNowPlayingMovies = async () => {
@@ -61,4 +61,31 @@ export const getTopRatedMovies = async () => {
     )
     .slice(0, 10);
   return parsedData;
+};
+
+export const getMovieDetails = async (id: string) => {
+  const res = await fetch(
+    `${baseAPI}/movie/${id}?api_key=${process.env.API_KEY}&language=en-US`
+  );
+  if (!res.ok) {
+    return undefined;
+  }
+  const data: MovieDetails = await res.json();
+  return data;
+};
+
+export const getMovieTrailer = async (id: string) => {
+  const res = await fetch(
+    `${baseAPI}/movie/${id}/videos?api_key=${process.env.API_KEY}&language=en-US`
+  );
+  if (!res.ok) {
+    return undefined;
+  }
+  const data: TrailersResponse = await res.json();
+  const parsedData = data.results.sort(
+    (a, b) =>
+      Date.parse(a.published_at.toString()) -
+      Date.parse(b.published_at.toString())
+  );
+  return parsedData[0];
 };

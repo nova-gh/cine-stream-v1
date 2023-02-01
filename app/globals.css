@@ -30,25 +30,28 @@
     @apply flex flex-col lg:flex-row min-h-screen bg-bg text-white  mx-auto max-w-[1400px] w-full
   }
   .main-wrapper{
-    @apply flex-1 p-5  h-screen overflow-y-scroll max-w-[1400px] w-full
+    @apply flex-1 p-5  h-[calc(100vh-152px)] lg:h-screen overflow-y-scroll max-w-[1400px] w-full 
   }
   .main{
     @apply lg:pr-4 space-y-10 
   }
+  .details-main{
+    @apply space-y-5 xl:px-10
+  }
   .section-title{
-    @apply text-3xl sm:text-4xl font-semibold mb-5 text-brand
+    @apply text-2xl sm:text-3xl lg:text-4xl font-semibold mb-5 text-brand
   }
   .link_hover{
-    @apply transition duration-75  ease-in-out
+    @apply transition-all duration-75  ease-linear
   }
   .card-title{
     @apply font-semibold text-base
   }
   .card-details{
-    @apply text-sm text-gray-300 font-medium
+    @apply text-xs md:text-sm text-gray-300 font-medium
   }
   .embla {
-    overflow: hidden;
+    @apply overflow-hidden
   }
   .embla__container {
     @apply flex 
