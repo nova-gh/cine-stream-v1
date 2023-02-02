@@ -12,10 +12,10 @@ type Props = {
 const Card = ({ item, slider, type }: Props) => {
   return (
     <article
-      className={`flex flex-col rounded-lg ${slider ? `embla__slide` : ""}`}
+      className={`flex w-full flex-col ${slider ? `embla__slide` : ""}`}
       key={item.id}
     >
-      <div className="group relative h-full min-h-[300px] w-full sm:min-h-[325px]">
+      <div className=" group relative h-full min-h-[300px] w-full max-w-[250px] sm:min-h-[325px]">
         <Image
           title={item.title}
           src={imgDomain + item.poster_path}
@@ -25,7 +25,7 @@ const Card = ({ item, slider, type }: Props) => {
           (max-width: 1200px) 100vw,33vw"
           placeholder="blur"
           blurDataURL={rgbDataURL(227, 109, 104)}
-          className="  max-w-[250px] object-fill transition-all  duration-75 ease-linear  group-hover:brightness-50"
+          className="object-fill transition-all duration-75 ease-linear rounded-lg group-hover:brightness-50"
         />
         <div className="absolute inset-0 hidden group-hover:inline">
           <Link
@@ -43,7 +43,7 @@ const Card = ({ item, slider, type }: Props) => {
           </Link>
         </div>
       </div>
-      <div className="p-2 space-y-2">
+      <div className="max-w-[250px] space-y-2  p-2 lg:max-w-full">
         <h2
           className="card-title line-clamp-1 "
           title={item.title ?? item.name ?? item.original_title}

@@ -20,7 +20,6 @@ const DynamicTvPage = async ({ params }: Props) => {
   if (!tv) {
     notFound();
   }
-  console.log(tv);
   return (
     <main className="details-main">
       <BackButton />
@@ -41,15 +40,15 @@ const DynamicTvPage = async ({ params }: Props) => {
             </div>
             <div className="flex items-center w-full mt-5 ml-1 space-x-5 text-3xl">
               <BookmarkButton />
-              <MediaWebsiteButton href={tv.homepage} name={tv.name} />
+              {tv.homepage ? (
+                <MediaWebsiteButton href={tv.homepage} name={tv.name} />
+              ) : null}
               {tvTrailer?.site.toLocaleLowerCase() == "youtube" ? (
                 <VideoButton
                   trailer={tvTrailer}
                   name={tv.name + " " + tvTrailer.name}
                 />
-              ) : (
-                ""
-              )}
+              ) : null}
             </div>
           </div>
           <article className="col-span-7 space-y-5 xl:col-span-9">
@@ -67,9 +66,7 @@ const DynamicTvPage = async ({ params }: Props) => {
                   countryCode={tv.production_countries?.at(0)?.iso_3166_1!}
                   svg
                 />
-              ) : (
-                ""
-              )}
+              ) : null}
               <time dateTime={tv.first_air_date}>
                 First Aired: <strong>{dateConverter(tv.first_air_date)}</strong>
               </time>
@@ -81,7 +78,9 @@ const DynamicTvPage = async ({ params }: Props) => {
                 <time dateTime={tv.first_air_date}>Ongoing..</time>
               )}
             </div>
-            <p className="sm:text-lg">{tv.overview}</p>
+            <p className="sm:text-lg">
+              {tv.overview ? tv.overview : "Overview not avaliable.."}
+            </p>
             <div className="flex flex-wrap gap-5">
               {tv.genres?.map((gen) => (
                 <p

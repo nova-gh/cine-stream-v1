@@ -11,7 +11,6 @@ type Props = {
   name: string | null;
 };
 const Modal = ({ isOpen, closeModal, trailer, name }: Props) => {
-  // console.log(trailer);
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>

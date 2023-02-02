@@ -57,7 +57,7 @@
     @apply flex 
   }
   .embla__slide {
-    @apply flex-[0_0_50%] lg:flex-[0_0_33.33%] min-w-0 pl-6 xl:flex-[0_0_25%] xl:pl-6 
+    @apply flex-[0_0_50%] sm:flex-[0_0_33.33%] lg:flex-[0_0_25%] min-w-0 pl-6 xl:flex-[0_0_20%] xl:pl-6 
   }
 
 }

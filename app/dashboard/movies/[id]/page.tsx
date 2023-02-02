@@ -40,15 +40,15 @@ const DynamicMoviePage = async ({ params }: Props) => {
             </div>
             <div className="flex items-center w-full mt-5 ml-1 space-x-5 text-3xl">
               <BookmarkButton />
-              <MediaWebsiteButton href={movie.homepage} name={movie.title} />
+              {movie.homepage ? (
+                <MediaWebsiteButton href={movie.homepage} name={movie.title} />
+              ) : null}
               {movTrailer?.site.toLocaleLowerCase() == "youtube" ? (
                 <VideoButton
                   trailer={movTrailer}
                   name={movie.title + " " + movTrailer.name}
                 />
-              ) : (
-                ""
-              )}
+              ) : null}
             </div>
           </div>
           <article className="space-y-5 md:col-span-7 xl:col-span-9">
@@ -71,9 +71,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
                   countryCode={movie.production_countries?.at(0)?.iso_3166_1!}
                   svg
                 />
-              ) : (
-                ""
-              )}
+              ) : null}
               <time>{`${movie.runtime} mins`}</time>
               <time dateTime={movie.release_date}>
                 Relase Date:
@@ -81,7 +79,9 @@ const DynamicMoviePage = async ({ params }: Props) => {
               </time>
             </div>
 
-            <p className="sm:text-lg">{movie.overview}</p>
+            <p className="sm:text-lg">
+              {movie.overview ? movie.overview : "Overview not avaliable.."}
+            </p>
             <div className="flex flex-wrap gap-5">
               {movie.genres?.map((gen) => (
                 <p
