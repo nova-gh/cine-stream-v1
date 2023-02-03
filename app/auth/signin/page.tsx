@@ -1,8 +1,6 @@
-import { getProviders } from "next-auth/react";
 import SigninButtons from "@/components/buttons/SigninButtons";
 
 const SignInPage = async () => {
-  const providers = await getProviders();
   return (
     <main className="flex h-[calc(100vh-152px)] w-full  items-center justify-center pl-5 lg:h-full">
       <article className="flex flex-col items-center justify-center w-full max-w-lg py-10 my-auto border border-white rounded-3xl bg-gradient-to-tl from-bg-dark to-bg-light">
@@ -83,7 +81,7 @@ const SignInPage = async () => {
             Login to your account
           </h1>
           <div className="mt-2">
-            <SigninButtons providers={providers} />
+            <SigninButtons />
           </div>
         </div>
       </article>

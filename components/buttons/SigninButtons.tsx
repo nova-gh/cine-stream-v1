@@ -1,20 +1,16 @@
 "use client";
-import { BuiltInProviderType } from "next-auth/providers";
-import {
-  ClientSafeProvider,
-  getProviders,
-  LiteralUnion,
-  signIn,
-} from "next-auth/react";
+import { signIn } from "next-auth/react";
 
-type Props = {
-  providers: Record<
-    LiteralUnion<BuiltInProviderType, string>,
-    ClientSafeProvider
-  > | null;
-};
-const SigninButtons = ({ providers }: Props) => {
-  console.log(process.env.NEXTAUTH_URL);
+const SigninButtons = () => {
+  const providers = {
+    google: {
+      id: "google",
+      name: "Google",
+      type: "oauth",
+      signinUrl: "http://localhost:3000/api/auth/signin/google",
+      callbackUrl: "http://localhost:3000/api/auth/callback/google",
+    },
+  };
   return (
     <div className="space-y-4">
       {Object.values(providers!).map((provider) => (
