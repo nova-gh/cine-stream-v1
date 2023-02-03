@@ -2,7 +2,7 @@ import SigninButtons from "@/components/buttons/SigninButtons";
 
 const SignInPage = async () => {
   return (
-    <main className="flex h-[calc(100vh-152px)] w-full  items-center justify-center pl-5 lg:h-full">
+    <main className="flex items-center justify-center w-full main lg:h-full">
       <article className="flex flex-col items-center justify-center w-full max-w-lg py-10 my-auto border border-white rounded-3xl bg-gradient-to-tl from-bg-dark to-bg-light">
         <svg
           className="w-16 h-16"

@@ -25,7 +25,7 @@ const DynamicTvPage = async ({ params }: Props) => {
       <BackButton />
       <section className="">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <div className="flex flex-col col-span-5 j xl:col-span-3">
+          <div className="j col-span-5 flex flex-col xl:col-span-3">
             <div className="relative h-full min-h-[300px]  md:min-h-[475px] ">
               <Image
                 title={tv.original_name}
@@ -34,11 +34,11 @@ const DynamicTvPage = async ({ params }: Props) => {
                 alt={`${tv.original_name} Poster`}
                 sizes="(max-width: 768px) 50vw,
                 (max-width: 1200px) 100vw,33vw"
-                blurDataURL={rgbDataURL(227, 109, 104)}
-                className="object-cover max-w-max rounded-xl"
+                blurDataURL={rgbDataURL(44, 55, 85)}
+                className="max-w-max rounded-xl object-cover"
               />
             </div>
-            <div className="flex items-center w-full mt-5 ml-1 space-x-5 text-3xl">
+            <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">
               <BookmarkButton />
               {tv.homepage ? (
                 <MediaWebsiteButton href={tv.homepage} name={tv.name} />
@@ -53,7 +53,7 @@ const DynamicTvPage = async ({ params }: Props) => {
           </div>
           <article className="col-span-7 space-y-5 xl:col-span-9">
             <div className="mb-2">
-              <h1 className="mb-2 section-title">
+              <h1 className="section-title mb-2">
                 {tv.name}
                 {tv.original_language !== "en" && (
                   <span> ({tv.original_name}) </span>
@@ -84,7 +84,7 @@ const DynamicTvPage = async ({ params }: Props) => {
             <div className="flex flex-wrap gap-5">
               {tv.genres?.map((gen) => (
                 <p
-                  className="flex-initial p-2 text-sm border border-white rounded-lg"
+                  className="flex-initial rounded-lg border border-white p-2 text-sm"
                   key={gen.id}
                 >
                   {gen.name}

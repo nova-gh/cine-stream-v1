@@ -24,8 +24,8 @@ const Card = ({ item, slider, type }: Props) => {
           sizes="(max-width: 768px) 50vw,
           (max-width: 1200px) 100vw,33vw"
           placeholder="blur"
-          blurDataURL={rgbDataURL(227, 109, 104)}
-          className="object-fill transition-all duration-75 ease-linear rounded-lg group-hover:brightness-50"
+          blurDataURL={rgbDataURL(44, 55, 85)}
+          className="rounded-lg object-fill transition-all duration-75 ease-linear group-hover:brightness-50"
         />
         <div className="absolute inset-0 hidden group-hover:inline">
           <Link
@@ -36,9 +36,9 @@ const Card = ({ item, slider, type }: Props) => {
                 ? tvsBaseUrl + item.id
                 : "/dashboard"
             }
-            className="flex items-center justify-center w-full h-full "
+            className="flex h-full w-full items-center justify-center "
           >
-            <FaEye className="w-10 h-10 text-brand" />
+            <FaEye className="h-10 w-10 text-brand" />
             <span className="sr-only">Details</span>
           </Link>
         </div>
@@ -50,7 +50,7 @@ const Card = ({ item, slider, type }: Props) => {
         >
           {item.title ?? item.name ?? item.original_title}
         </h2>
-        <div className="flex items-center justify-between card-details">
+        <div className="card-details flex items-center justify-between">
           <p className="">
             {item.release_date?.slice(0, 4) ?? item.first_air_date?.slice(0, 4)}
           </p>

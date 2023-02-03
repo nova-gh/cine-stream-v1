@@ -34,7 +34,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
                 sizes="(max-width: 768px) 50vw,
                 (max-width: 1200px) 100vw,33vw"
                 placeholder="blur"
-                blurDataURL={rgbDataURL(227, 109, 104)}
+                blurDataURL={rgbDataURL(44, 55, 85)}
                 className="object-cover max-w-max rounded-xl"
               />
             </div>
