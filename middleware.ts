@@ -36,9 +36,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: [
-    "/dashboard/settings/:path*",
-    "/dashboard/bookmarks/:path*",
-    "/auth/signin",
-  ],
+  matcher: ["/dashboard/:path*", "/auth/signin"],
 };

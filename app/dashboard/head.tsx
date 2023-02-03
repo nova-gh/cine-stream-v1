@@ -1,7 +1,7 @@
 export default function Head() {
   return (
     <>
-      <title>Cine stream - Dashboard </title>
+      <title>Cine stream - Bookmarks </title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta
         name="description"

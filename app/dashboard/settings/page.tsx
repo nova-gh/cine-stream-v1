@@ -1,13 +1,11 @@
 import SignoutButton from "@/components/buttons/SignoutButton";
-import { getSession } from "@/lib/session";
 
 const SettingsPage = async () => {
-  const session = await getSession();
   return (
-    <main className="space-y-0 main">
+    <main className="main space-y-0">
       <h1 className="section-title">Settings</h1>
-      <section className="flex flex-col flex-1 h-full ">
-        <div className="self-end mt-auto">
+      <section className="flex h-full flex-1 flex-col ">
+        <div className="mt-auto self-end">
           <SignoutButton />
         </div>
       </section>

@@ -8,18 +8,18 @@ import { IoLogIn } from "react-icons/io5";
 
 const Navbar = ({ session }: { session: Session | null }) => {
   const links = [
-    { id: 1, name: "Home", route: "/dashboard", icon: <TbHome2 /> },
-    { id: 2, name: "Movies", route: "/dashboard/movies", icon: <TbMovie /> },
+    { id: 1, name: "Home", route: "/", icon: <TbHome2 /> },
+    { id: 2, name: "Movies", route: "/movies", icon: <TbMovie /> },
     {
       id: 3,
       name: "Tv Shows",
-      route: "/dashboard/tvs",
+      route: "/tvs",
       icon: <TbDeviceTvOld />,
     },
     {
       id: 4,
       name: "Bookmarks",
-      route: "/dashboard/bookmarks",
+      route: "/dashboard",
       icon: <BsFillBookmarksFill />,
     },
   ];
