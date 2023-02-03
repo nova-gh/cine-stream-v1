@@ -1,0 +1,98 @@
+import { getProviders, getSession } from "next-auth/react";
+import SigninButtons from "@/components/buttons/SigninButtons";
+
+const SignInPage = async () => {
+  const providers = await getProviders();
+  const session = await getSession();
+  console.log("====================================");
+  console.log(session);
+  console.log("====================================");
+  return (
+    <main className="flex h-[calc(100vh-152px)] w-full  items-center justify-center pl-5 lg:h-full">
+      <article className="flex flex-col items-center justify-center w-full max-w-lg py-10 my-auto border border-white rounded-3xl bg-gradient-to-tl from-bg-dark to-bg-light">
+        <svg
+          className="w-16 h-16"
+          viewBox="0 0 77 77"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="77" height="77" />
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M58.6523 0C69.7812 0 77 7.21875 77 18.3477V58.6523C77 69.7812 69.7812 77 58.6523 77H18.3477C7.21875 77 0 69.7812 0 58.6523V18.3477C0 7.21875 7.21875 0 18.3477 0H58.6523Z"
+            fill="#D32D27"
+          />
+          <g filter="url(#filter0_d_0_1)">
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M33.5298 32.9928C33.5298 32.6821 33.7761 32.4302 34.0846 32.4302C34.3912 32.4302 34.6395 32.6792 34.6395 32.9928V43.5305C34.6395 43.8412 34.3932 44.093 34.0846 44.093C33.7781 44.093 33.5298 43.844 33.5298 43.5305V32.9928ZM14.6635 40.953C16.1345 40.953 17.3269 39.7481 17.3269 38.2616C17.3269 36.7752 16.1345 35.5702 14.6635 35.5702C13.1925 35.5702 12 36.7752 12 38.2616C12 39.7481 13.1925 40.953 14.6635 40.953ZM21.7661 40.953C23.2371 40.953 24.4295 39.7481 24.4295 38.2616C24.4295 36.7752 23.2371 35.5702 21.7661 35.5702C20.2951 35.5702 19.1026 36.7752 19.1026 38.2616C19.1026 39.7481 20.2951 40.953 21.7661 40.953ZM28.8687 40.953C30.3397 40.953 31.5321 39.7481 31.5321 38.2616C31.5321 36.7752 30.3397 35.5702 28.8687 35.5702C27.3977 35.5702 26.2052 36.7752 26.2052 38.2616C26.2052 39.7481 27.3977 40.953 28.8687 40.953Z"
+              fill="white"
+            />
+            <path
+              d="M56.8041 36.2035L63.1144 29.7272C63.2546 29.5835 63.4332 29.4856 63.6275 29.446C63.8219 29.4063 64.0234 29.4267 64.2065 29.5045C64.3896 29.5823 64.5461 29.7141 64.6563 29.8832C64.7665 30.0522 64.8254 30.251 64.8256 30.4544V46.0688C64.8254 46.2722 64.7665 46.471 64.6563 46.6401C64.5461 46.8091 64.3896 46.9409 64.2065 47.0187C64.0234 47.0965 63.8219 47.1169 63.6275 47.0773C63.4332 47.0376 63.2546 46.9398 63.1144 46.796L56.8041 40.3198M41.7639 47.5233H53.7961C54.5939 47.5233 55.359 47.198 55.9231 46.619C56.4872 46.0401 56.8041 45.2548 56.8041 44.436V32.0872C56.8041 31.2684 56.4872 30.4832 55.9231 29.9042C55.359 29.3253 54.5939 29 53.7961 29H41.7639C40.9661 29 40.201 29.3253 39.6369 29.9042C39.0727 30.4832 38.7558 31.2684 38.7558 32.0872V44.436C38.7558 45.2548 39.0727 46.0401 39.6369 46.619C40.201 47.198 40.9661 47.5233 41.7639 47.5233V47.5233Z"
+              fill="white"
+            />
+            <path
+              d="M56.8041 36.2035L63.1144 29.7272C63.2546 29.5835 63.4332 29.4856 63.6275 29.446C63.8219 29.4063 64.0234 29.4267 64.2065 29.5045C64.3896 29.5823 64.5461 29.7141 64.6563 29.8832C64.7665 30.0522 64.8254 30.251 64.8256 30.4544V46.0688C64.8254 46.2722 64.7665 46.471 64.6563 46.6401C64.5461 46.8091 64.3896 46.9409 64.2065 47.0187C64.0234 47.0965 63.8219 47.1169 63.6275 47.0773C63.4332 47.0376 63.2546 46.9398 63.1144 46.796L56.8041 40.3198M41.7639 47.5233H53.7961C54.5939 47.5233 55.359 47.198 55.9231 46.619C56.4872 46.0401 56.8041 45.2548 56.8041 44.436V32.0872C56.8041 31.2684 56.4872 30.4832 55.9231 29.9042C55.359 29.3253 54.5939 29 53.7961 29H41.7639C40.9661 29 40.201 29.3253 39.6369 29.9042C39.0727 30.4832 38.7558 31.2684 38.7558 32.0872V44.436C38.7558 45.2548 39.0727 46.0401 39.6369 46.619C40.201 47.198 40.9661 47.5233 41.7639 47.5233V47.5233Z"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+          </g>
+          <defs>
+            <filter
+              id="filter0_d_0_1"
+              x="10"
+              y="26.25"
+              width="57.5756"
+              height="24.0233"
+              filterUnits="userSpaceOnUse"
+              colorInterpolationFilters="sRGB"
+            >
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset />
+              <feGaussianBlur stdDeviation="1" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.683594 0 0 0 0 0.134182 0 0 0 0 0.114323 0 0 0 0.766616 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_0_1"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_0_1"
+                result="shape"
+              />
+            </filter>
+          </defs>
+        </svg>
+        <div className="flex flex-col items-center justify-center mt-10">
+          <h1
+            role="heading"
+            aria-label="Login to your account"
+            className="text-2xl font-bold leading-6 "
+          >
+            Login to your account
+          </h1>
+          <div className="mt-2">
+            <SigninButtons providers={providers} />
+          </div>
+        </div>
+      </article>
+    </main>
+  );
+};
+
+export default SignInPage;

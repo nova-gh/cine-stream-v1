@@ -1,3 +1,5 @@
+import type { Session } from "next-auth";
+
 export type ReactChildren = {
   children: React.ReactNode;
 };

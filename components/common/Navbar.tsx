@@ -2,20 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { TbHome2, TbMovie, TbDeviceTvOld } from "react-icons/tb";
 import { BsFillBookmarksFill } from "react-icons/bs";
+import type { Session } from "next-auth";
+import SigninButton from "../buttons/SigninButtons";
+import { IoLogIn } from "react-icons/io5";
 
-const Navbar = () => {
+const Navbar = ({ session }: { session: Session | null }) => {
   const links = [
-    { id: 1, name: "home", route: "/dashboard", icon: <TbHome2 /> },
-    { id: 2, name: "movies", route: "/dashboard/movies", icon: <TbMovie /> },
+    { id: 1, name: "Home", route: "/dashboard", icon: <TbHome2 /> },
+    { id: 2, name: "Movies", route: "/dashboard/movies", icon: <TbMovie /> },
     {
       id: 3,
-      name: "tv shows",
+      name: "Tv Shows",
       route: "/dashboard/tvs",
       icon: <TbDeviceTvOld />,
     },
     {
       id: 4,
-      name: "bookmarks",
+      name: "Bookmarks",
       route: "/dashboard/bookmarks",
       icon: <BsFillBookmarksFill />,
     },
@@ -100,27 +103,41 @@ const Navbar = () => {
             <Link
               key={link.id}
               href={link.route}
+              title={link.name}
+              aria-label={link.name}
               className="p-1 link_hover rounded-xl hover:bg-brand-light"
             >
-              <span className="text-xl bg-red-500 md:text-3xl ">
+              <span className="text-2xl bg-red-500 md:text-3xl ">
                 {link.icon}
               </span>
               <span className="sr-only"> {link.name}</span>
             </Link>
           ))}
         </div>
-        <Link href={"/dashboard/settings"} className="">
-          <div className="bg-white border border-white rounded-full link_hover hover:border-brand-light hover:bg-brand-light">
-            <Image
-              src={`https://api.dicebear.com/5.x/bottts/svg?seed=Ginger&scale=70`}
-              width={44}
-              height={44}
-              alt={`profile pic`}
-              className="w-8 h-8 hover:border-brand-light md:h-11 md:w-11"
-            />
-          </div>
-          <span className="sr-only"> {`settings page`}</span>
-        </Link>
+        {session?.user ? (
+          <Link href={"/dashboard/settings"} className="">
+            <div className="bg-white border border-white rounded-full link_hover hover:border-brand-light hover:bg-brand-light">
+              <Image
+                src={`https://api.dicebear.com/5.x/bottts/svg?seed=${session.user?.email}&scale=70`}
+                width={44}
+                height={44}
+                alt={`profile pic`}
+                className="w-8 h-8 hover:border-brand-light md:h-11 md:w-11"
+              />
+            </div>
+            <span className="sr-only"> {`settings page`}</span>
+          </Link>
+        ) : // <Link
+        //   href="/auth/signin"
+        //   title="Sign In"
+        //   className="text-green-500 link_hover hover:text-green-600 "
+        // >
+        //   <span>
+        //     <IoLogIn className="w-10 h-10 md:h-12 md:w-12" />
+        //   </span>
+        //   <span className="sr-only hover:not-sr-only">Sign in </span>
+        // </Link>
+        null}
       </header>
     </div>
   );

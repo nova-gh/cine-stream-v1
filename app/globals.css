@@ -33,7 +33,7 @@
     @apply flex-1 p-5 h-screen overflow-y-scroll max-w-[1400px] w-full 
   }
   .main{
-    @apply lg:pr-4 space-y-10 
+    @apply  space-y-10 
   }
   .details-main{
     @apply space-y-5 xl:px-10
@@ -51,7 +51,7 @@
     @apply text-xs md:text-sm text-gray-300 font-medium
   }
   .embla {
-    @apply overflow-hidden
+    @apply overflow-hidden lg:pr-5
   }
   .embla__container {
     @apply flex 
