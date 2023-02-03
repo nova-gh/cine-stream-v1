@@ -1,12 +1,8 @@
-import { getProviders, getSession } from "next-auth/react";
+import { getProviders } from "next-auth/react";
 import SigninButtons from "@/components/buttons/SigninButtons";
 
 const SignInPage = async () => {
   const providers = await getProviders();
-  const session = await getSession();
-  console.log("====================================");
-  console.log(session);
-  console.log("====================================");
   return (
     <main className="flex h-[calc(100vh-152px)] w-full  items-center justify-center pl-5 lg:h-full">
       <article className="flex flex-col items-center justify-center w-full max-w-lg py-10 my-auto border border-white rounded-3xl bg-gradient-to-tl from-bg-dark to-bg-light">

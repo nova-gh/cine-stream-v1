@@ -30,13 +30,13 @@
     @apply flex flex-col lg:flex-row min-h-screen bg-bg text-white  mx-auto max-w-[1400px] w-full
   }
   .main-wrapper{
-    @apply flex-1 p-5 h-screen overflow-y-scroll max-w-[1400px] w-full 
+    @apply flex-1 pl-5 h-screen overflow-y-scroll max-w-[1400px] w-full flex flex-col
   }
   .main{
-    @apply  space-y-10 
+    @apply  space-y-10 flex-1 h-full lg:pt-5  pb-5 flex flex-col
   }
   .details-main{
-    @apply space-y-5 xl:px-10
+    @apply space-y-5 xl:px-10 
   }
   .section-title{
     @apply text-2xl sm:text-3xl lg:text-4xl font-semibold mb-5 text-brand

@@ -27,7 +27,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
     <div className="sticky z-40 p-4 -top-2 bg-bg lg:relative lg:inset-0 lg:top-0 lg:min-h-full">
       <header className="flex items-center justify-between h-full p-4 rounded-lg bg-bg-light lg:flex-col ">
         <Link href={"/"} className="">
-          <div className="">
+          <div className="link_hover hover:opacity-80">
             <svg
               className="w-12 h-12 md:h-14 md:w-14"
               viewBox="0 0 77 77"
@@ -105,11 +105,9 @@ const Navbar = ({ session }: { session: Session | null }) => {
               href={link.route}
               title={link.name}
               aria-label={link.name}
-              className="p-1 link_hover rounded-xl hover:bg-brand-light"
+              className="p-1 link_hover rounded-xl hover:text-brand"
             >
-              <span className="text-2xl bg-red-500 md:text-3xl ">
-                {link.icon}
-              </span>
+              <span className="text-2xl md:text-3xl ">{link.icon}</span>
               <span className="sr-only"> {link.name}</span>
             </Link>
           ))}
@@ -127,17 +125,18 @@ const Navbar = ({ session }: { session: Session | null }) => {
             </div>
             <span className="sr-only"> {`settings page`}</span>
           </Link>
-        ) : // <Link
-        //   href="/auth/signin"
-        //   title="Sign In"
-        //   className="text-green-500 link_hover hover:text-green-600 "
-        // >
-        //   <span>
-        //     <IoLogIn className="w-10 h-10 md:h-12 md:w-12" />
-        //   </span>
-        //   <span className="sr-only hover:not-sr-only">Sign in </span>
-        // </Link>
-        null}
+        ) : (
+          <Link
+            href="/auth/signin"
+            title="Sign In"
+            className=" link_hover hover:text-green-500"
+          >
+            <span>
+              <IoLogIn className="w-10 h-10 md:h-12 md:w-12" />
+            </span>
+            <span className="sr-only hover:not-sr-only">Sign in </span>
+          </Link>
+        )}
       </header>
     </div>
   );

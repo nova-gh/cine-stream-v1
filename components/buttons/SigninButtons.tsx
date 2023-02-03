@@ -14,6 +14,7 @@ type Props = {
   > | null;
 };
 const SigninButtons = ({ providers }: Props) => {
+  console.log(process.env.NEXTAUTH_URL);
   return (
     <div className="space-y-4">
       {Object.values(providers!).map((provider) => (

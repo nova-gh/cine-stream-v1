@@ -3,10 +3,10 @@ import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
 
 const config: DynamoDBClientConfig = {
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY!,
-    secretAccessKey: process.env.AWS_SECRET_KEY!,
+    accessKeyId: process.env.NEXT_AWS_ACCESS_KEY!,
+    secretAccessKey: process.env.NEXT_AWS_SECRET_KEY!,
   },
-  region: process.env.AWS_REGION,
+  region: process.env.NEXT_AWS_REGION,
 };
 
 export const client = DynamoDBDocument.from(new DynamoDB(config), {
