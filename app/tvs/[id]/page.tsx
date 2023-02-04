@@ -17,6 +17,7 @@ const DynamicTvPage = async ({ params }: Props) => {
   const tvData = getTvDetails(params.id);
   const tvTrailerData = getTvTrailer(params.id);
   const [tv, tvTrailer] = await Promise.all([tvData, tvTrailerData]);
+  const flag = tv?.production_countries?.at(0)?.iso_3166_1!;
   if (!tv) {
     notFound();
   }
@@ -35,6 +36,7 @@ const DynamicTvPage = async ({ params }: Props) => {
                 sizes="(max-width: 768px) 50vw,
                 (max-width: 1200px) 100vw,33vw"
                 blurDataURL={rgbDataURL(44, 55, 85)}
+                priority
                 className="max-w-max rounded-xl object-cover"
               />
             </div>
@@ -60,11 +62,14 @@ const DynamicTvPage = async ({ params }: Props) => {
                 )}
               </h1>
             </div>
-            <div className="space-x-5 text-sm font-medium lg:text-base ">
+            <div className="flex items-center space-x-5 text-sm font-medium lg:text-base ">
               {tv.production_countries?.at(0) ? (
                 <ReactCountryFlag
-                  countryCode={tv.production_countries?.at(0)?.iso_3166_1!}
+                  aria-label={flag + "flag"}
+                  countryCode={flag}
+                  title={flag + "flag"}
                   svg
+                  alt={flag + "flag"}
                 />
               ) : null}
               <time dateTime={tv.first_air_date}>

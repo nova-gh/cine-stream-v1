@@ -1,11 +1,17 @@
 import SigninButtons from "@/components/buttons/SigninButtons";
+import { getSession } from "@/lib/session";
+import { redirect } from "next/navigation";
 
 const SignInPage = async () => {
+  const session = await getSession();
+  if (session?.user) {
+    redirect("/dashboard");
+  }
   return (
-    <main className="flex items-center justify-center w-full main lg:h-full">
-      <article className="flex flex-col items-center justify-center w-full max-w-lg py-10 my-auto border border-white rounded-3xl bg-gradient-to-tl from-bg-dark to-bg-light">
+    <main className="main flex w-full items-center justify-center lg:h-full">
+      <article className="my-auto flex w-full max-w-lg flex-col items-center justify-center rounded-3xl border border-white bg-gradient-to-tl from-bg-dark to-bg-light py-10">
         <svg
-          className="w-16 h-16"
+          className="h-16 w-16"
           viewBox="0 0 77 77"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +78,7 @@ const SignInPage = async () => {
             </filter>
           </defs>
         </svg>
-        <div className="flex flex-col items-center justify-center mt-10">
+        <div className="mt-10 flex flex-col items-center justify-center">
           <h1
             role="heading"
             aria-label="Login to your account"

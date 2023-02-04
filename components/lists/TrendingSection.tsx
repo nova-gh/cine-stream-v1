@@ -23,10 +23,11 @@ const TrendingSection = ({ list }: Props) => {
       <h1 className="section-title">Trending Movies & Shows</h1>
       <div className="embla" ref={emblaRef}>
         <div className="embla__container">
-          {list.map((item) => (
+          {list.map((item, i) => (
             <Card
               key={item.id}
               item={item}
+              index={i}
               slider={true}
               type={item.media_type}
             />

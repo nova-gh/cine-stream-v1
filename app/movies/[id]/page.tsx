@@ -16,15 +16,16 @@ const DynamicMoviePage = async ({ params }: Props) => {
   const movieData = getMovieDetails(params.id);
   const movieTrailerData = getMovieTrailer(params.id);
   const [movie, movTrailer] = await Promise.all([movieData, movieTrailerData]);
+  const flag = movie?.production_countries?.at(0)?.iso_3166_1!;
   if (!movie) {
     notFound();
   }
   return (
-    <main className="relative details-main">
+    <main className="details-main relative">
       <BackButton />
       <section className="">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <div className="flex flex-col j md:col-span-5 xl:col-span-3">
+          <div className="flex flex-col md:col-span-5 xl:col-span-3">
             <div className="relative h-full min-h-[300px]  md:min-h-[475px] ">
               <Image
                 title={movie.title}
@@ -34,11 +35,12 @@ const DynamicMoviePage = async ({ params }: Props) => {
                 sizes="(max-width: 768px) 50vw,
                 (max-width: 1200px) 100vw,33vw"
                 placeholder="blur"
+                priority
                 blurDataURL={rgbDataURL(44, 55, 85)}
-                className="object-cover max-w-max rounded-xl"
+                className="max-w-max rounded-xl object-cover"
               />
             </div>
-            <div className="flex items-center w-full mt-5 ml-1 space-x-5 text-3xl">
+            <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">
               <BookmarkButton />
               {movie.homepage ? (
                 <MediaWebsiteButton href={movie.homepage} name={movie.title} />
@@ -53,23 +55,26 @@ const DynamicMoviePage = async ({ params }: Props) => {
           </div>
           <article className="space-y-5 md:col-span-7 xl:col-span-9">
             <div className="mb-2">
-              <h1 className="mb-2 section-title">
+              <h1 className="section-title mb-2">
                 {movie.title}
                 {movie.original_language !== "en" && (
                   <span> ({movie.title}) </span>
                 )}
               </h1>
               {movie.tagline && (
-                <q className="italic font-medium text-brand-light">
+                <q className="font-medium italic text-brand-light">
                   {movie.tagline}
                 </q>
               )}
             </div>
-            <div className="space-x-5 text-sm font-medium lg:text-base ">
+            <div className="flex items-center space-x-5 text-sm font-medium lg:text-base ">
               {movie.production_countries?.at(0) ? (
                 <ReactCountryFlag
-                  countryCode={movie.production_countries?.at(0)?.iso_3166_1!}
+                  aria-label={flag + "flag"}
+                  countryCode={flag}
+                  title={flag + "flag"}
                   svg
+                  alt={flag + "flag"}
                 />
               ) : null}
               <time>{`${movie.runtime} mins`}</time>
@@ -85,7 +90,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
             <div className="flex flex-wrap gap-5">
               {movie.genres?.map((gen) => (
                 <p
-                  className="flex-initial p-2 text-sm border border-white rounded-lg"
+                  className="flex-initial rounded-lg border border-white p-2 text-sm"
                   key={gen.id}
                 >
                   {gen.name}

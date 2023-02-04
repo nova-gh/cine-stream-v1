@@ -8,8 +8,9 @@ type Props = {
   item: MediaItem;
   slider?: boolean;
   type: string;
+  index?: number;
 };
-const Card = ({ item, slider, type }: Props) => {
+const Card = ({ item, slider, type, index }: Props) => {
   return (
     <article
       className={`flex w-full flex-col ${slider ? `embla__slide` : ""}`}
@@ -24,7 +25,7 @@ const Card = ({ item, slider, type }: Props) => {
           sizes="(max-width: 768px) 50vw,
           (max-width: 1200px) 100vw,33vw"
           placeholder="blur"
-          priority={slider ? true : false}
+          priority={slider && index! < 2 ? true : false}
           blurDataURL={rgbDataURL(44, 55, 85)}
           className="aspect-square rounded-lg object-fill transition-all duration-75 ease-linear group-hover:brightness-50"
         />
