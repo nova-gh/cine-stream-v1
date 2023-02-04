@@ -24,12 +24,18 @@ const Navbar = ({ session }: { session: Session | null }) => {
     },
   ];
   return (
-    <div className="sticky z-40 p-4 -top-2 bg-bg lg:relative lg:inset-0 lg:top-0 lg:min-h-full">
-      <header className="flex items-center justify-between h-full p-4 rounded-lg bg-bg-light lg:flex-col ">
-        <Link href={"/"} className="">
+    <div className="sticky -top-2 z-40 bg-bg p-4 lg:relative lg:inset-0 lg:top-0 lg:min-h-full">
+      <header className="flex h-full items-center justify-between rounded-lg bg-bg-light p-4 lg:flex-col ">
+        <Link
+          href={"/"}
+          className=""
+          title="Cine Stream Logo"
+          aria-label="Cine Stream Logo"
+        >
+          <span className="sr-only">Cine Stream Logo</span>
           <div className="link_hover hover:opacity-80">
             <svg
-              className="w-12 h-12 md:h-14 md:w-14"
+              className="h-12 w-12 md:h-14 md:w-14"
               viewBox="0 0 77 77"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -98,14 +104,14 @@ const Navbar = ({ session }: { session: Session | null }) => {
             </svg>
           </div>
         </Link>
-        <div className="flex mx-auto space-x-5 lg:flex-col lg:space-x-0 lg:space-y-5 ">
+        <div className="mx-auto flex space-x-5 lg:flex-col lg:space-x-0 lg:space-y-5 ">
           {links.map((link) => (
             <Link
               key={link.id}
               href={link.route}
               title={link.name}
               aria-label={link.name}
-              className="p-1 link_hover rounded-xl hover:text-brand"
+              className="link_hover rounded-xl p-1 hover:text-brand"
             >
               <span className="text-2xl md:text-3xl ">{link.icon}</span>
               <span className="sr-only"> {link.name}</span>
@@ -114,13 +120,13 @@ const Navbar = ({ session }: { session: Session | null }) => {
         </div>
         {session?.user ? (
           <Link href={"/dashboard/settings"} className="">
-            <div className="bg-white border border-white rounded-full link_hover hover:border-brand-light hover:bg-brand-light">
+            <div className="link_hover rounded-full border border-white bg-white hover:border-brand-light hover:bg-brand-light">
               <Image
                 src={`https://api.dicebear.com/5.x/bottts/svg?seed=${session.user?.email}&scale=70`}
                 width={44}
                 height={44}
                 alt={`profile pic`}
-                className="w-8 h-8 hover:border-brand-light md:h-11 md:w-11"
+                className="h-8 w-8 hover:border-brand-light md:h-11 md:w-11"
               />
             </div>
             <span className="sr-only"> {`settings page`}</span>
@@ -132,7 +138,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
             className=" link_hover hover:text-green-500"
           >
             <span>
-              <IoLogIn className="w-10 h-10 md:h-12 md:w-12" />
+              <IoLogIn className="h-10 w-10 md:h-12 md:w-12" />
             </span>
             <span className="sr-only hover:not-sr-only">Sign in </span>
           </Link>

@@ -24,8 +24,9 @@ const Card = ({ item, slider, type }: Props) => {
           sizes="(max-width: 768px) 50vw,
           (max-width: 1200px) 100vw,33vw"
           placeholder="blur"
+          priority={slider ? true : false}
           blurDataURL={rgbDataURL(44, 55, 85)}
-          className="rounded-lg object-fill transition-all duration-75 ease-linear group-hover:brightness-50"
+          className="aspect-square rounded-lg object-fill transition-all duration-75 ease-linear group-hover:brightness-50"
         />
         <div className="absolute inset-0 hidden group-hover:inline">
           <Link
