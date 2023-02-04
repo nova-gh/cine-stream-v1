@@ -18,7 +18,7 @@ const SigninButtons = () => {
           key={provider.id}
           aria-label="Continue with google"
           role="button"
-          onClick={() => signIn(provider.id)}
+          onClick={() => signIn(provider.id, { callbackUrl: "/dashboard" })}
           className="link_hover mt-10 flex w-max items-center rounded-lg border border-white bg-bg-light py-3.5 px-4 text-white hover:bg-bg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-1"
         >
           <svg
