@@ -8,7 +8,7 @@ const BackButton = () => {
     <button
       type="button"
       onClick={() => router.back()}
-      className="flex items-center p-2 px-3 -ml-3 text-base font-semibold text-white rounded-lg link_hover w-min hover:bg-bg-dark lg:text-lg"
+      className="link_hover flex w-min items-center rounded-lg p-2 px-3 text-base font-semibold text-white hover:bg-bg-dark lg:-ml-3 lg:text-lg"
     >
       <FaArrowLeft className="mr-3 " />
       Back

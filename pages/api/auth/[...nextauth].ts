@@ -2,10 +2,10 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import type { NextAuthOptions } from "next-auth";
 import { DynamoDBAdapter } from "@next-auth/dynamodb-adapter";
-import { client } from "@/lib/db";
+import { dbClient } from "@/lib/db";
 
 export const authOptions: NextAuthOptions = {
-  adapter: DynamoDBAdapter(client),
+  adapter: DynamoDBAdapter(dbClient),
   session: {
     strategy: "jwt",
   },
@@ -19,5 +19,16 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
+  callbacks: {
+    async session({ token, session }) {
+      if (token && session.user) {
+        session.user.id = token.sub;
+        session.user.name = token.name;
+        session.user.email = token.email;
+        session.user.image = token.picture;
+      }
+      return session;
+    },
+  },
 };
 export default NextAuth(authOptions);

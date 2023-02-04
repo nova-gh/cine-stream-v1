@@ -9,7 +9,7 @@ const config: DynamoDBClientConfig = {
   region: process.env.NEXT_AWS_REGION,
 };
 
-export const client = DynamoDBDocument.from(new DynamoDB(config), {
+export const dbClient = DynamoDBDocument.from(new DynamoDB(config), {
   marshallOptions: {
     convertEmptyValues: true,
     removeUndefinedValues: true,
