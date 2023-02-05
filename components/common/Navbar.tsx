@@ -3,7 +3,6 @@ import Link from "next/link";
 import { TbHome2, TbMovie, TbDeviceTvOld } from "react-icons/tb";
 import { BsFillBookmarksFill } from "react-icons/bs";
 import type { Session } from "next-auth";
-import SigninButton from "../buttons/SigninButtons";
 import { IoLogIn } from "react-icons/io5";
 
 const Navbar = ({ session }: { session: Session | null }) => {
@@ -23,6 +22,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
       icon: <BsFillBookmarksFill />,
     },
   ];
+
   return (
     <div className="sticky -top-2 z-40 bg-bg p-4 lg:relative lg:inset-0 lg:top-0 lg:min-h-full">
       <header className="flex h-full items-center justify-between rounded-lg bg-bg-light p-4 lg:flex-col ">
@@ -110,6 +110,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
               key={link.id}
               href={link.route}
               title={link.name}
+              as={link.route}
               aria-label={link.name}
               className="link_hover rounded-xl p-1 hover:text-brand"
             >
