@@ -28,17 +28,17 @@ const DynamicTvPage = async ({ params }: Props) => {
       <section className="">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
           <div className="j col-span-5 flex flex-col xl:col-span-3">
-            <div className="relative h-full min-h-[300px]  md:min-h-[475px] ">
+            <div className="relative  h-[300px]  md:h-[475px] ">
               <Image
-                title={tv.original_name}
+                title={tv.name}
                 src={imgDomain + tv.poster_path}
                 fill
-                alt={`${tv.original_name} Poster`}
+                alt={`${tv.name} Poster`}
                 sizes="(max-width: 768px) 50vw,
                 (max-width: 1200px) 100vw,33vw"
                 blurDataURL={rgbDataURL(44, 55, 85)}
                 priority
-                className="max-w-max rounded-xl object-cover"
+                className="max-w-max rounded-xl "
               />
             </div>
             <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">

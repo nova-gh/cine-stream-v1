@@ -26,7 +26,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
       <section className="">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
           <div className="flex flex-col md:col-span-5 xl:col-span-3">
-            <div className="relative h-full min-h-[300px]  md:min-h-[475px] ">
+            <div className="relative h-[300px]  md:h-[475px] ">
               <Image
                 title={movie.title}
                 src={imgDomain + movie.poster_path}
@@ -37,7 +37,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
                 placeholder="blur"
                 priority
                 blurDataURL={rgbDataURL(44, 55, 85)}
-                className="max-w-max rounded-xl object-cover"
+                className="max-w-max rounded-xl "
               />
             </div>
             <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">

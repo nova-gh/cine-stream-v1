@@ -37,7 +37,6 @@ const Card = ({ item, slider, type, index }: Props) => {
         />
         <div className="absolute inset-0 hidden group-hover:inline">
           <Link
-            prefetch={false}
             href={mediaLink}
             className="flex h-full w-full items-center justify-center "
           >
