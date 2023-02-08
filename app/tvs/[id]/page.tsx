@@ -8,6 +8,7 @@ import MediaWebsiteButton from "@/components/buttons/MediaWebsiteButton";
 import { dateConverter, rgbDataURL } from "@/lib/utils";
 import ReactCountryFlag from "react-country-flag";
 import VideoButton from "@/components/buttons/VideoButton";
+import { Suspense } from "react";
 
 type Props = {
   params: { id: string };
@@ -17,7 +18,7 @@ const DynamicTvPage = async ({ params }: Props) => {
   const tvData = getTvDetails(params.id);
   const tvTrailerData = getTvTrailer(params.id);
   const [tv, tvTrailer] = await Promise.all([tvData, tvTrailerData]);
-  const flag = tv?.production_countries?.at(0)?.iso_3166_1!;
+  const flag = tv?.origin_country?.at(0);
   if (!tv) {
     notFound();
   }
@@ -65,11 +66,11 @@ const DynamicTvPage = async ({ params }: Props) => {
             <div className="flex items-center space-x-5 text-sm font-medium lg:text-base ">
               {tv.production_countries?.at(0) ? (
                 <ReactCountryFlag
-                  aria-label={flag + "flag"}
-                  countryCode={flag}
-                  title={flag + "flag"}
+                  aria-label={`${flag} Flag`}
+                  countryCode={flag!}
+                  title={`${flag} Flag`}
                   svg
-                  alt={flag + "flag"}
+                  alt={`${flag} Flag`}
                 />
               ) : null}
               <time dateTime={tv.first_air_date}>

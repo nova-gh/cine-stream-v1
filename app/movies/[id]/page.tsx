@@ -70,11 +70,11 @@ const DynamicMoviePage = async ({ params }: Props) => {
             <div className="flex items-center space-x-5 text-sm font-medium lg:text-base ">
               {movie.production_countries?.at(0) ? (
                 <ReactCountryFlag
-                  aria-label={flag + "flag"}
+                  aria-label={`${flag} Flag`}
                   countryCode={flag}
-                  title={flag + "flag"}
+                  title={`${flag} Flag`}
                   svg
-                  alt={flag + "flag"}
+                  alt={`${flag} Flag`}
                 />
               ) : null}
               <time>{`${movie.runtime} mins`}</time>

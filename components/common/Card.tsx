@@ -11,6 +11,12 @@ type Props = {
   index?: number;
 };
 const Card = ({ item, slider, type, index }: Props) => {
+  const mediaLink =
+    item.media_type == "movie" || type == "movie"
+      ? moviesBaseUrl + item?.id
+      : item.media_type == "tv" || type == "tv"
+      ? tvsBaseUrl + item?.id
+      : "/dashboard";
   return (
     <article
       className={`flex w-full flex-col ${slider ? `embla__slide` : ""}`}
@@ -31,13 +37,8 @@ const Card = ({ item, slider, type, index }: Props) => {
         />
         <div className="absolute inset-0 hidden group-hover:inline">
           <Link
-            href={
-              item.media_type == "movie" || type == "movie"
-                ? moviesBaseUrl + item.id
-                : item.media_type == "tv" || type == "tv"
-                ? tvsBaseUrl + item.id
-                : "/dashboard"
-            }
+            prefetch={false}
+            href={mediaLink}
             className="flex h-full w-full items-center justify-center "
           >
             <FaEye className="h-10 w-10 text-brand" />
