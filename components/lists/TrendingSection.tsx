@@ -14,7 +14,7 @@ const TrendingSection = ({ list }: Props) => {
       loop: true,
       containScroll: "trimSnaps",
       startIndex: 0,
-      align: "start",
+      align: 1,
     },
     [Autoplay({ stopOnMouseEnter: true, stopOnInteraction: false })]
   );

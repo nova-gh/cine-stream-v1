@@ -175,3 +175,14 @@ export interface TrailersResult {
   published_at: Date;
   id: string;
 }
+
+export interface BookmarkItem {
+  mediaYear: string;
+  dateCreated: string;
+  mediaType: string;
+  tmdbId: string;
+  userId: string;
+  id: string;
+  poster_path: string;
+  title: string;
+}
