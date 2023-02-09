@@ -1,10 +1,27 @@
 "use client";
 
-import { BsBookmarkPlusFill } from "react-icons/bs";
+import { BsBookmarkPlusFill, BsBookmarkPlus } from "react-icons/bs";
+import type { User } from "next-auth";
+import { useRouter } from "next/navigation";
 
-const BookmarkButton = () => {
+interface Props {
+  user: User | undefined;
+}
+const BookmarkButton = ({ user }: Props) => {
+  const router = useRouter();
+  const handleAddBookmark = () => {
+    if (!user) {
+      router.push("/auth/signin");
+    } else {
+      alert(user.name);
+    }
+  };
+
   return (
-    <button className="text-green-500 link_hover hover:text-green-600">
+    <button
+      onClick={handleAddBookmark}
+      className="link_hover text-green-500 hover:text-green-300"
+    >
       <BsBookmarkPlusFill className="" />
       <span className="sr-only">Bookmark</span>
     </button>

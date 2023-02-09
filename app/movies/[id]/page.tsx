@@ -8,6 +8,7 @@ import BackButton from "@/components/buttons/BackButton";
 import BookmarkButton from "@/components/buttons/BookmarkButton";
 import MediaWebsiteButton from "@/components/buttons/MediaWebsiteButton";
 import VideoButton from "@/components/buttons/VideoButton";
+import { getCurrentUser } from "@/lib/session";
 type Props = {
   params: { id: string };
 };
@@ -16,6 +17,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
   const movieData = getMovieDetails(params.id);
   const movieTrailerData = getMovieTrailer(params.id);
   const [movie, movTrailer] = await Promise.all([movieData, movieTrailerData]);
+  const user = await getCurrentUser();
   const flag = movie?.production_countries?.at(0)?.iso_3166_1!;
   if (!movie) {
     notFound();
@@ -41,7 +43,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
               />
             </div>
             <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">
-              <BookmarkButton />
+              <BookmarkButton user={user} />
               {movie.homepage ? (
                 <MediaWebsiteButton href={movie.homepage} name={movie.title} />
               ) : null}

@@ -9,6 +9,7 @@ import { dateConverter, rgbDataURL } from "@/lib/utils";
 import ReactCountryFlag from "react-country-flag";
 import VideoButton from "@/components/buttons/VideoButton";
 import { Suspense } from "react";
+import { getCurrentUser } from "@/lib/session";
 
 type Props = {
   params: { id: string };
@@ -18,6 +19,7 @@ const DynamicTvPage = async ({ params }: Props) => {
   const tvData = getTvDetails(params.id);
   const tvTrailerData = getTvTrailer(params.id);
   const [tv, tvTrailer] = await Promise.all([tvData, tvTrailerData]);
+  const user = await getCurrentUser();
   const flag = tv?.origin_country?.at(0);
   if (!tv) {
     notFound();
@@ -42,7 +44,7 @@ const DynamicTvPage = async ({ params }: Props) => {
               />
             </div>
             <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">
-              <BookmarkButton />
+              <BookmarkButton user={user} />
               {tv.homepage ? (
                 <MediaWebsiteButton href={tv.homepage} name={tv.name} />
               ) : null}
