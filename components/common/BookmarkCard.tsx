@@ -10,7 +10,7 @@ type Props = {
 };
 
 const BookmarkCard = ({ item }: Props) => {
-  const mediaLink = `/${item.mediaType}/${item.id}`;
+  const mediaLink = `/${item.mediaType}/${item.tmdbId}`;
   return (
     <article className="flex flex-col">
       <div className=" group relative h-full min-h-[300px] w-full max-w-[250px] sm:min-h-[325px]">

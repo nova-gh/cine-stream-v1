@@ -33,7 +33,8 @@ export const authOptions: NextAuthOptions = {
           ProjectionExpression: "dateCreated, mediaType, tmdbId, image, id",
         })
       );
-      const bookmarkIds = fetchBookmarkIds.Items?.map((item) => item.id) ?? [];
+      const bookmarkIds: String[] =
+        fetchBookmarkIds.Items?.map((item) => item.tmdbId) ?? [];
       if (token && session.user) {
         session.user.id = token.sub;
         session.user.name = token.name;
