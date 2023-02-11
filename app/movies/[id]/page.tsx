@@ -18,11 +18,17 @@ const DynamicMoviePage = async ({ params }: Props) => {
   const movieTrailerData = getMovieTrailer(params.id);
   const [movie, movTrailer] = await Promise.all([movieData, movieTrailerData]);
   const user = await getCurrentUser();
-  console.log(user);
   const flag = movie?.production_countries?.at(0)?.iso_3166_1!;
   if (!movie) {
     notFound();
   }
+  const movieItem = {
+    year: movie.release_date,
+    type: "movies",
+    tmdbId: movie.id.toString(),
+    poster: movie.poster_path,
+    title: movie.title,
+  };
   return (
     <main className="details-main relative">
       <BackButton />
@@ -44,7 +50,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
               />
             </div>
             <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">
-              <BookmarkButton user={user} mediaItem={movie} />
+              <BookmarkButton user={user} mediaItem={movieItem} />
               {movie.homepage ? (
                 <MediaWebsiteButton href={movie.homepage} name={movie.title} />
               ) : null}

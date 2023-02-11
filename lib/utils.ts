@@ -18,3 +18,6 @@ export const dateConverter = (date: string) => {
   const options: Intl.DateTimeFormatOptions = { timeZone: "UTC" };
   return event.toLocaleDateString("en-US", options);
 };
+
+export const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));

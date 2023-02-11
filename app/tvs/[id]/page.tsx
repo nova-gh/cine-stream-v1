@@ -24,6 +24,13 @@ const DynamicTvPage = async ({ params }: Props) => {
   if (!tv) {
     notFound();
   }
+  const tvItem = {
+    year: tv.first_air_date,
+    type: "tvs",
+    tmdbId: tv.id.toString(),
+    poster: tv.poster_path,
+    title: tv.name,
+  };
   return (
     <main className="details-main">
       <BackButton />
@@ -44,7 +51,7 @@ const DynamicTvPage = async ({ params }: Props) => {
               />
             </div>
             <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">
-              <BookmarkButton user={user} />
+              <BookmarkButton user={user} mediaItem={tvItem} />
               {tv.homepage ? (
                 <MediaWebsiteButton href={tv.homepage} name={tv.name} />
               ) : null}
