@@ -4,6 +4,7 @@ import { TbHome2, TbMovie, TbDeviceTvOld } from "react-icons/tb";
 import { BsFillBookmarksFill } from "react-icons/bs";
 import type { Session } from "next-auth";
 import { IoLogIn } from "react-icons/io5";
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = ({ session }: { session: Session | null }) => {
   const links = [
@@ -20,6 +21,12 @@ const Navbar = ({ session }: { session: Session | null }) => {
       name: "Bookmarks",
       route: "/dashboard",
       icon: <BsFillBookmarksFill />,
+    },
+    {
+      id: 5,
+      name: "Search",
+      route: "/search",
+      icon: <FaSearch />,
     },
   ];
 
@@ -104,7 +111,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
             </svg>
           </div>
         </Link>
-        <div className="mx-auto flex space-x-5 lg:flex-col lg:space-x-0 lg:space-y-5 ">
+        <div className="mx-auto flex space-x-2 sm:space-x-5 lg:flex-col lg:space-x-0 lg:space-y-5 ">
           {links.map((link) => (
             <Link
               key={link.id}
@@ -114,7 +121,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
               aria-label={link.name}
               className="link_hover rounded-xl p-1 hover:text-brand"
             >
-              <span className="text-2xl md:text-3xl ">{link.icon}</span>
+              <span className="text-xl md:text-3xl ">{link.icon}</span>
               <span className="sr-only"> {link.name}</span>
             </Link>
           ))}

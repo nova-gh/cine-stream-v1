@@ -86,10 +86,14 @@ const DynamicMoviePage = async ({ params }: Props) => {
                   alt={`${flag} Flag`}
                 />
               ) : null}
-              <time>{`${movie.runtime} mins`}</time>
+              <time>
+                {movie.runtime !== 0 ? `${movie.runtime} mins` : null}
+              </time>
               <time dateTime={movie.release_date}>
                 Relase Date:
-                <strong>{dateConverter(movie.release_date)}</strong>
+                <strong className="ml-1">
+                  {dateConverter(movie.release_date)}
+                </strong>
               </time>
             </div>
 

@@ -27,28 +27,39 @@ const BookmarksPage = async () => {
     (item) => item.mediaType == "tvs"
   );
   return (
-    <main className="main">
-      <h1 className="section-title mb-0">Bookmarked Movies</h1>
-      <section className="">
-        <div className="grid grid-cols-2 gap-4 px-1 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5">
-          {bookmarkedMovies?.map((movie) => (
-            <BookmarkCard item={movie} key={movie.id} />
-          ))}
-        </div>
-      </section>
-
-      {bookmarkedTvs?.length ? (
+    <main className="details-main">
+      {response.Count && response?.Count > 0 ? (
         <>
-          <h2 className="section-title mb-0">Bookmarked Tv Shows</h2>
+          <h1 className="section-title mb-0">Bookmarked Movies</h1>
           <section className="">
             <div className="grid grid-cols-2 gap-4 px-1 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5">
-              {bookmarkedTvs?.map((tv) => (
-                <BookmarkCard item={tv} key={tv.id} />
+              {bookmarkedMovies?.map((movie) => (
+                <BookmarkCard item={movie} key={movie.id} />
               ))}
             </div>
           </section>
+
+          {bookmarkedTvs?.length ? (
+            <>
+              <h2 className="section-title mb-0">Bookmarked Tv Shows</h2>
+              <section className="">
+                <div className="grid grid-cols-2 gap-4 px-1 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5">
+                  {bookmarkedTvs?.map((tv) => (
+                    <BookmarkCard item={tv} key={tv.id} />
+                  ))}
+                </div>
+              </section>
+            </>
+          ) : null}
         </>
-      ) : null}
+      ) : (
+        <>
+          <h1 className="section-title mb-0">No Bookmark found</h1>
+          <p className="mt-1 lg:text-lg">
+            Search for a Movie or Tv Show and add them to bookmark.
+          </p>
+        </>
+      )}
     </main>
   );
 };
