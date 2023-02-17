@@ -3,21 +3,24 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
 
-const SearchInput = () => {
+type Props = {
+  option?: string;
+};
+
+const SearchInput = ({ option }: Props) => {
   const router = useRouter();
   const [query, setQuery] = useState("");
-  const [searchOption, setSearchOption] = useState("");
+  const [searchOption, setSearchOption] = useState(option ?? "movie");
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!query) return;
     router.push(`/search/${query}?option=${searchOption}`);
   };
-  console.log(searchOption);
   return (
-    <div className="flex w-full items-center bg-bg ">
+    <div className="flex items-center bg-bg">
       <form
         onSubmit={handleSubmit}
-        className="flex w-full flex-row items-center rounded-xl "
+        className="flex w-full max-w-2xl flex-row items-center rounded-xl "
       >
         <input
           type="text"
@@ -34,24 +37,26 @@ const SearchInput = () => {
         <select
           name="searchOption"
           id="searchOption"
+          defaultValue={searchOption}
           className="rounded-r-lg bg-bg py-2 text-sm md:text-xl"
           onChange={(e) => setSearchOption(e.target.value)}
         >
-          <option value="" className="text-white ">
-            Both
-          </option>
-          <option value="movies" className="text-white ">
+          <option value="movie" className="text-white ">
             Movies
           </option>
-          <option value="shows" className="text-white ">
+          <option value="tv" className="text-white ">
             Shows
           </option>
         </select>
-        <div className="ml-4 flex items-center text-xl sm:ml-6 sm:text-2xl">
-          <button type="submit">
-            <FaSearch />
-          </button>
-        </div>
+        <button
+          title="Search"
+          aria-label="Search"
+          type="submit"
+          className="link_hover ml-3 flex items-center rounded-md p-3 text-xl hover:bg-bg-dark hover:text-brand sm:text-2xl"
+        >
+          <FaSearch />
+          <span className="sr-only">Search</span>
+        </button>
       </form>
     </div>
   );

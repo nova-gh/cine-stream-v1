@@ -40,7 +40,11 @@ const DynamicTvPage = async ({ params }: Props) => {
             <div className="relative  h-[300px]  md:h-[475px] ">
               <Image
                 title={tv.name}
-                src={imgDomain + tv.poster_path}
+                src={
+                  !tv.poster_path
+                    ? "/no-poster-available.jpg"
+                    : imgDomain + tv.poster_path
+                }
                 fill
                 alt={`${tv.name} Poster`}
                 sizes="(max-width: 768px) 50vw,

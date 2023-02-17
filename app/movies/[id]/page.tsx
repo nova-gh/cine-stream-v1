@@ -38,7 +38,11 @@ const DynamicMoviePage = async ({ params }: Props) => {
             <div className="relative h-[300px]  md:h-[475px] ">
               <Image
                 title={movie.title}
-                src={imgDomain + movie.poster_path}
+                src={
+                  !movie.poster_path
+                    ? "/no-poster-available.jpg"
+                    : imgDomain + movie.poster_path
+                }
                 fill
                 alt={`${movie.title} Poster`}
                 sizes="(max-width: 768px) 50vw,

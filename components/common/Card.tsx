@@ -11,12 +11,17 @@ type Props = {
   index?: number;
 };
 const Card = ({ item, slider, type, index }: Props) => {
-  const mediaLink =
-    item.media_type == "movie" || type == "movie"
-      ? moviesBaseUrl + item?.id
-      : item.media_type == "tv" || type == "tv"
-      ? tvsBaseUrl + item?.id
-      : "/dashboard";
+  const mediaLink = item.release_date
+    ? moviesBaseUrl + item?.id
+    : item.first_air_date
+    ? tvsBaseUrl + item?.id
+    : "/dashboard";
+
+  const mediaType = item.release_date
+    ? "Movie"
+    : item.first_air_date
+    ? "TV"
+    : type;
   return (
     <article
       className={`flex w-full flex-col ${slider ? `embla__slide` : ""}`}
@@ -25,7 +30,11 @@ const Card = ({ item, slider, type, index }: Props) => {
       <div className=" group relative h-full min-h-[300px] w-full max-w-[250px] sm:min-h-[325px]">
         <Image
           title={item.title}
-          src={imgDomain + item.poster_path}
+          src={
+            !item.poster_path
+              ? "/no-poster-available.jpg"
+              : imgDomain + item.poster_path
+          }
           fill
           alt={`${item.title} Poster`}
           sizes="(max-width: 768px) 50vw,
@@ -54,10 +63,13 @@ const Card = ({ item, slider, type, index }: Props) => {
         </h2>
         <div className="card-details flex items-center justify-between">
           <p className="">
-            {item.release_date?.slice(0, 4) ?? item.first_air_date?.slice(0, 4)}
+            {item.release_date || item.first_air_date
+              ? item.release_date?.slice(0, 4) ??
+                item.first_air_date?.slice(0, 4)
+              : "N/A"}
           </p>
           <p className="w-min rounded-sm border border-gray-500 p-1 px-3 py-1 text-[10px] uppercase md:text-sm">
-            {item.media_type ?? type}
+            {mediaType}
           </p>
         </div>
       </div>
@@ -66,12 +78,3 @@ const Card = ({ item, slider, type, index }: Props) => {
 };
 
 export default Card;
-// <Link
-//       href={
-//         item.media_type == "movie"
-//           ? moviesBaseUrl
-//           : item.media_type == "tv"
-//           ? tvsBaseUrl
-//           : "/dashboard"
-//       }
-//     >
