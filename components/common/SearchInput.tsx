@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
 
@@ -31,14 +31,14 @@ const SearchInput = ({ option }: Props) => {
           required
           autoComplete="off"
           placeholder="Movies, TVs or Both"
-          className="w-3/4 rounded-l-lg bg-transparent px-4 py-2 text-sm text-white placeholder:text-sm md:text-xl md:placeholder:text-xl"
+          className="w-3/4 rounded-l-lg bg-transparent px-4 py-2 text-white md:text-xl md:placeholder:text-xl"
         />
 
         <select
           name="searchOption"
           id="searchOption"
           defaultValue={searchOption}
-          className="rounded-r-lg bg-bg py-2 text-sm md:text-xl"
+          className="rounded-r-lg bg-bg py-2 md:text-xl"
           onChange={(e) => setSearchOption(e.target.value)}
         >
           <option value="movie" className="text-white ">
