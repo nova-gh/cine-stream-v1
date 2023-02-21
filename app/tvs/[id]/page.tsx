@@ -55,7 +55,7 @@ const DynamicTvPage = async ({ params }: Props) => {
               />
             </div>
             <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">
-              <BookmarkButton user={user} mediaItem={tvItem} />
+              <BookmarkButton user={user} bookmarkPayload={tvItem} />
               {tv.homepage ? (
                 <MediaWebsiteButton href={tv.homepage} name={tv.name} />
               ) : null}

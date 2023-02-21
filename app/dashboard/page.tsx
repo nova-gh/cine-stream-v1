@@ -17,15 +17,12 @@ const BookmarksPage = async () => {
       ExpressionAttributeValues: {
         ":u_id": session.user.id,
       },
-      // ProjectionExpression: "dateCreated, mediaType, tmdbId, image, id",
     })
   );
   const bookmarkedMovies = response.Items?.filter(
-    (item) => item.mediaType == "movies"
+    (item) => item.type == "movies"
   );
-  const bookmarkedTvs = response.Items?.filter(
-    (item) => item.mediaType == "tvs"
-  );
+  const bookmarkedTvs = response.Items?.filter((item) => item.type == "tvs");
   return (
     <main className="details-main">
       {response.Count && response?.Count > 0 ? (

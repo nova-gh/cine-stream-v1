@@ -4,19 +4,20 @@ import { BookmarkItem } from "@/types/typing";
 import Image from "next/image";
 import Link from "next/link";
 import { FaEye, FaTrash } from "react-icons/fa";
+import DeleteButton from "../buttons/DeleteButton";
 
 type Props = {
   item: Record<string, any> | BookmarkItem;
 };
 
 const BookmarkCard = ({ item }: Props) => {
-  const mediaLink = `/${item.mediaType}/${item.tmdbId}`;
+  const mediaLink = `/${item.type}/${item.tmdbId}`;
   return (
     <article className="flex flex-col">
       <div className=" group relative h-full min-h-[300px] w-full max-w-[250px] sm:min-h-[325px]">
         <Image
           title={item.title}
-          src={imgDomain + item.poster_path}
+          src={imgDomain + item.poster}
           fill
           alt={`${item.title} Poster`}
           sizes="(max-width: 768px) 50vw,
@@ -41,11 +42,8 @@ const BookmarkCard = ({ item }: Props) => {
             {item.title}
           </h2>
           <div className="card-details flex items-center justify-between">
-            <p className="">{item.mediaYear}</p>
-            <button className="link_hover w-min rounded-lg border bg-bg-light  px-3 py-2 text-[10px] hover:bg-brand  md:text-sm">
-              <FaTrash />
-              <span className="sr-only">Remove</span>
-            </button>
+            <p className="">{item.year}</p>
+            <DeleteButton bookmarkedId={item.id} mediaTitle={item.title} />
           </div>
         </div>
       </div>

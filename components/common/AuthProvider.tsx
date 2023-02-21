@@ -8,10 +8,14 @@ type Props = {
   children: React.ReactNode;
   session: Session | null;
 };
+
 const AuthProvider = ({ children, session }: Props) => {
   return (
     <SessionProvider session={session}>
-      <ToastContainer theme="dark" />
+      <ToastContainer
+        theme="dark"
+        toastClassName={"h-[80px] md:h-auto ml-10 my-4 md:m-0"}
+      />
       {children}
     </SessionProvider>
   );

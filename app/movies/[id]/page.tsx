@@ -30,7 +30,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
     title: movie.title,
   };
   return (
-    <main className="details-main relative">
+    <main className="relative details-main">
       <BackButton />
       <section className="">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
@@ -53,8 +53,8 @@ const DynamicMoviePage = async ({ params }: Props) => {
                 className="max-w-max rounded-xl "
               />
             </div>
-            <div className="mt-5 ml-1 flex w-full items-center space-x-5 text-3xl">
-              <BookmarkButton user={user} mediaItem={movieItem} />
+            <div className="flex items-center w-full mt-5 ml-1 space-x-5 text-3xl">
+              <BookmarkButton user={user} bookmarkPayload={movieItem} />
               {movie.homepage ? (
                 <MediaWebsiteButton href={movie.homepage} name={movie.title} />
               ) : null}
@@ -68,14 +68,14 @@ const DynamicMoviePage = async ({ params }: Props) => {
           </div>
           <article className="space-y-5 md:col-span-7 xl:col-span-9">
             <div className="mb-2">
-              <h1 className="section-title mb-2">
+              <h1 className="mb-2 section-title">
                 {movie.title}
                 {movie.original_language !== "en" && (
                   <span> ({movie.title}) </span>
                 )}
               </h1>
               {movie.tagline && (
-                <q className="font-medium italic text-brand-light">
+                <q className="italic font-medium text-brand-light">
                   {movie.tagline}
                 </q>
               )}
@@ -107,7 +107,7 @@ const DynamicMoviePage = async ({ params }: Props) => {
             <div className="flex flex-wrap gap-5">
               {movie.genres?.map((gen) => (
                 <p
-                  className="flex-initial rounded-lg border border-white p-2 text-sm"
+                  className="flex-initial p-2 text-sm border border-white rounded-lg"
                   key={gen.id}
                 >
                   {gen.name}

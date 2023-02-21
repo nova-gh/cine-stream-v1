@@ -1,6 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
 import { dbClient } from "@/lib/db";
-import { PutCommand } from "@aws-sdk/lib-dynamodb";
+import { DeleteCommand } from "@aws-sdk/lib-dynamodb";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
@@ -18,31 +17,29 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data | ErrorData>
 ) {
-  if (req.method !== "POST") {
+  if (req.method !== "DELETE") {
     res.status(405).json({ error: `${req.method} Not Allowed.`, status: 405 });
   }
   const session = await getServerSession(req, res, authOptions);
+  const { bookmarkId, mediaTitle } = JSON.parse(req.body);
   const { id } = session?.user!;
-  const uuid = uuidv4();
-  const date = new Date().toISOString();
-  const { mediaPayload } = JSON.parse(req.body);
   const bookmarkItem = {
-    id: uuid,
+    id: bookmarkId,
     userId: id,
-    dateCreated: date,
-    ...mediaPayload,
   };
 
   try {
     const item = await dbClient.send(
-      new PutCommand({
+      new DeleteCommand({
         TableName: process.env.NEXT_AWS_TABLE_NAME,
-        Item: bookmarkItem,
+        Key: bookmarkItem,
       })
     );
-    res
-      .status(200)
-      .json({ message: "Bookmark Created", data: bookmarkItem, status: 200 });
+    res.status(200).json({
+      message: "Bookmark Deleted",
+      data: { mediaTitle },
+      status: 200,
+    });
   } catch (error) {
     if (error instanceof Error) {
       res.status(400).json({
@@ -52,7 +49,7 @@ export default async function handler(
     } else {
       res
         .status(404)
-        .json({ error: "Unexpected Error Creating a bookmark", status: 404 });
+        .json({ error: "Unexpected Error Deleting a bookmark", status: 404 });
     }
   }
 }
