@@ -30,17 +30,22 @@ export const authOptions: NextAuthOptions = {
           ExpressionAttributeValues: {
             ":u_id": token.sub,
           },
-          ProjectionExpression: "dateCreated, mediaType, tmdbId, image, id",
+          ProjectionExpression: "id, tmdbId",
         })
       );
-      const bookmarkIds: String[] =
-        fetchBookmarkIds.Items?.map((item) => item.tmdbId) ?? [];
+      const record = fetchBookmarkIds.Items;
+      const userBookmarks: { id: string; tmdbId: string }[] = Object.entries(
+        record ?? []
+      ).map(([k, v]) => ({
+        id: v.id,
+        tmdbId: v.tmdbId,
+      }));
       if (token && session.user) {
         session.user.id = token.sub;
         session.user.name = token.name;
         session.user.email = token.email;
         session.user.image = token.picture;
-        session.user.bookmarkIds = bookmarkIds;
+        session.user.bookmarkIds = userBookmarks;
       }
       return session;
     },

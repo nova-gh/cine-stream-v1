@@ -177,12 +177,20 @@ export interface TrailersResult {
 }
 
 export interface BookmarkItem {
-  mediaYear: string;
   dateCreated: string;
-  mediaType: string;
   tmdbId: string;
   userId: string;
+  year: string;
+  poster: string;
   id: string;
-  poster_path: string;
+  type: string;
+  title: string;
+}
+
+export interface BookmarkPayload {
+  year: string;
+  type: string;
+  tmdbId: string;
+  poster: string;
   title: string;
 }

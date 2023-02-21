@@ -4,7 +4,7 @@ declare module "next-auth" {
   interface Session {
     user: User & {
       id: UserId;
-      bookmarkIds: String[];
+      bookmarkIds: { id: string; tmdbId: string }[];
     };
   }
 }
