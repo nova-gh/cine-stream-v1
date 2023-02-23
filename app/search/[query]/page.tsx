@@ -20,7 +20,7 @@ const DynamicMoviePage = async ({ params, searchParams }: Props) => {
   const query = params.query;
   const option = searchParams?.option;
   const searchResults = await getSearchResults(query, option!);
-  const formatedQuery = query.replaceAll("%20", " ");
+  const formatedQuery = decodeURIComponent(query);
   return (
     <main className="details-main">
       <h1 className="section-title mb-0 ">Search Results: {formatedQuery}</h1>

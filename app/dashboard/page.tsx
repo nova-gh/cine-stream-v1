@@ -27,15 +27,18 @@ const BookmarksPage = async () => {
     <main className="details-main">
       {response.Count && response?.Count > 0 ? (
         <>
-          <h1 className="section-title mb-0">Bookmarked Movies</h1>
-          <section className="">
-            <div className="grid grid-cols-2 gap-4 px-1 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5">
-              {bookmarkedMovies?.map((movie) => (
-                <BookmarkCard item={movie} key={movie.id} />
-              ))}
-            </div>
-          </section>
-
+          {bookmarkedMovies?.length ? (
+            <>
+              <h1 className="section-title mb-0">Bookmarked Movies</h1>
+              <section className="">
+                <div className="grid grid-cols-2 gap-4 px-1 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5">
+                  {bookmarkedMovies?.map((movie) => (
+                    <BookmarkCard item={movie} key={movie.id} />
+                  ))}
+                </div>
+              </section>
+            </>
+          ) : null}
           {bookmarkedTvs?.length ? (
             <>
               <h2 className="section-title mb-0">Bookmarked Tv Shows</h2>
